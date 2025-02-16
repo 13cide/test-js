@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { getEnvFile } from './env';
 import { FirestoreModule } from './providers/firestore/firestore.module';
+import { ExampleModule } from './modules/example/example.module';
 
 @Module({
   imports: [
@@ -18,23 +19,9 @@ import { FirestoreModule } from './providers/firestore/firestore.module';
       }),
       inject: [ConfigService],
     }),
+    ExampleModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
-
-
-
-
-
-
-// @Module({
-//   imports: [ConfigModule.forRoot({
-//     isGlobal: true,
-//     envFilePath: getEnvFile(),
-//   })],
-//   controllers: [AppController],
-//   providers: [AppService],
-// })
-// export class AppModule {}
